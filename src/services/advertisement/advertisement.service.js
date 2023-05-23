@@ -1,22 +1,22 @@
-const { Advertisement } = require('../../dataBase');
+const { AdvertisementModel } = require('../../dataBase');
 
 module.exports = {
   getAll: async (filter = {}) => {
-    return Advertisement.find(filter)
+    return AdvertisementModel.find(filter)
   },
   getById: async (filter = {}) => {
-    return Advertisement.findById(filter)
+    return AdvertisementModel.findById(filter)
   },
   updateAdvert: (advertId, newInfo) => {
-    return Advertisement.findByIdAndUpdate(advertId, newInfo, { new: true })
+    return AdvertisementModel.findByIdAndUpdate(advertId, newInfo, { new: true })
   },
   created: async (newInfo) => {
-    return Advertisement.create(newInfo)
+    return AdvertisementModel.create(newInfo)
   },
   deleteMany: async (advertId) => {
-    return Advertisement.deleteMany({ _id: advertId })
+    return AdvertisementModel.deleteMany({ _id: advertId })
   },
   deleteOne: async (advertId) => {
-      return Advertisement.deleteOne({ _id: advertId })
+      return AdvertisementModel.deleteOne({ _id: advertId })
   }
 };

@@ -1,5 +1,6 @@
 const { userService } = require('../../services');
 const { userValidator } = require('../../validator');
+
 const ApiError = require('../../error/ApiError');
 
 module.exports = {

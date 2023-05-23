@@ -1,7 +1,8 @@
 const { authValidator } = require('../../validator');
 const { authService } = require('../../services');
+const { AuthModel } = require('../../dataBase');
+
 const ApiError = require('../../error/ApiError');
-const { Auth } = require('../../dataBase');
 
 module.exports = {
   bodyValidate: async (req, res, next) => {
@@ -27,7 +28,7 @@ module.exports = {
 
       authService.checkToken(accessToken);
 
-      const tokenInfo = await Auth.findOne({ accessToken });
+      const tokenInfo = await AuthModel.findOne({ accessToken });
 
       if (!tokenInfo){
         throw new ApiError('token not valid', 401)

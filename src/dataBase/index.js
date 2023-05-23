@@ -1,6 +1,6 @@
 module.exports = {
-  User: require('./user/User'),
-  Car: require('./car/Car'),
-  Auth: require('./auth/Auth'),
-  Advertisement: require('./advertisement/Advertisement')
+  UserModel: require('./model/user/user.schema'),
+  CarModel: require('./model/car/Car.schema'),
+  AuthModel: require('./model/auth/auth.schema'),
+  AdvertisementModel: require('./model/advertisement/advertisement.schema')
 };

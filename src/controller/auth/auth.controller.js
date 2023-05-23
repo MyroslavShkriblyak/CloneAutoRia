@@ -1,5 +1,5 @@
 const { authService } = require('../../services');
-const Auth = require('../../dataBase/auth/Auth');
+const { AuthModel } = require('../../dataBase');
 
 module.exports = {
   login: async (req, res, next) => {
@@ -10,7 +10,7 @@ module.exports = {
 
       const tokenPair = authService.generateAccessToken({ id: user._id });
 
-      await Auth.create({ ...tokenPair, _user_id: user._id });
+      await AuthModel.create({ ...tokenPair, _user_id: user._id });
 
       res.json({
         user,

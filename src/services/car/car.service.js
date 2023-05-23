@@ -1,19 +1,19 @@
-const { Car } = require('../../dataBase');
+const { CarModel } = require('../../dataBase');
 
 module.exports = {
   getAll: async (filter = {}) => {
-    return Car.find(filter)
+    return CarModel.find(filter)
   },
   findOneByParams: async (filter = {}) => {
-    return Car.findOne(filter)
+    return CarModel.findOne(filter)
   },
   updateCar: async (carsId, newInfo) => {
-    return Car.findByIdAndUpdate(carsId, newInfo, { new: true })
+    return CarModel.findByIdAndUpdate(carsId, newInfo, { new: true })
   },
   created: async (newInfo) => {
-    return Car.create(newInfo)
+    return CarModel.create(newInfo)
   },
-  deleteOne: async (userId) => {
-    return Car.deleteOne({ _id: userId });
+  deleteOne: async (carId) => {
+    return CarModel.deleteOne({ _id: carId });
   }
 }

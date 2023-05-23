@@ -1,6 +1,7 @@
-const { carValidator, commonValidator } = require('../../validator')
+const { carValidator, commonValidator } = require('../../validator');
+const { carService } = require('../../services');
+
 const ApiError = require('../../error/ApiError')
-const { carService } = require('../../services')
 
 module.exports = {
   getCarDynamically: (fieldNane, from = 'body', dbField = fieldNane) =>
@@ -47,9 +48,9 @@ module.exports = {
   },
   isCarIdValidator: async (req, res, next) => {
     try {
-      const { userId } = req.params;
+      const { carsId } = req.params;
 
-      const validate = await commonValidator.idValidator.validate(userId)
+      const validate = await commonValidator.idValidator.validate(carsId)
 
       if (validate.error) {
         throw new ApiError(validate.error.message, 400)
