@@ -20,13 +20,4 @@ router.post(
   userController.create,
 );
 
-
-
-// router.delete(
-//   '/listings/:userId',
-//   userMiddleware.checkRole,
-//   userMiddleware.getUserDynamically('userId', 'params', '_id'),
-//   userController.delete
-// );
-
 module.exports = router;

@@ -5,11 +5,11 @@ const { advertisementController, userController } = require('../../../controller
 
 
 router.put(
-  '/:userId/ban',
+  '/ban/:userId',
   userMiddleware.checkRole('manager'),
   authMiddleware.bodyValidate,
   userMiddleware.getUserDynamically('userId', 'params', '_id'),
-  userController.update
+  userController.BanUser
 );
 
 router.delete('/invalid', userMiddleware.checkRole('manager'), advertisementController.deleteAdvertMany);

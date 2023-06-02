@@ -1,5 +1,5 @@
 const { authValidator } = require('../../validator');
-const { authService } = require('../../services');
+const { authService } = require('../../service');
 const { AuthModel } = require('../../dataBase');
 
 const ApiError = require('../../error/ApiError');

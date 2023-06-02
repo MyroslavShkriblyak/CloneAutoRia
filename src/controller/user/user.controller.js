@@ -1,6 +1,4 @@
-const { userService, authService } = require('../../services');
-
-const ApiError = require('../../error/ApiError');
+const { userService, authService } = require('../../service');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -12,20 +10,37 @@ module.exports = {
       next(e);
     }
   },
-  update: async (req, res, next) => {
+  userById: async (req, res, next) => {
+    try {
+      const user = await userService.findOneByParams();
+
+      res.json(user);
+    } catch (e) {
+      next(e);
+    }
+  },
+  BanUser: async (req, res, next) => {
     try {
       const newUserInfo = req.body;
       const userId = req.params.userId;
 
       const user = await userService.update(userId, newUserInfo);
 
-      if (!user) {
-        throw new ApiError('User not found', 404);
-      }
-
       user.isBanned = true;
       await user.save();
-      res.json('ok');
+      res.status(201).json('ok');
+    } catch (e) {
+      next(e);
+    }
+  },
+  updateUser: async (req, res, next) => {
+    try {
+      const newUserInfo = req.body;
+      const userId = req.params.userId;
+
+      const user = await userService.update(userId, newUserInfo);
+
+      res.status(201).json(user);
     } catch (e) {
       next(e);
     }
@@ -39,6 +54,16 @@ module.exports = {
       const user = await userService.created({ ...req.body, password: hashPassword });
 
       res.status(201).json(user);
+    } catch (e) {
+      next(e);
+    }
+  },
+  deleteUser: async (req, res, next) => {
+    try {
+
+      await userService.deleteOne(req.params.userId);
+
+      res.status(201).json('ok');
     } catch (e) {
       next(e);
     }

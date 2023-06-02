@@ -4,5 +4,6 @@ module.exports = {
   advertisementRouter: require('./advertisement/advertisement.router'),
   buyerRouter: require('./role/buyer/buyer.router'),
   managerRouter: require('./role/manager/manager.router'),
-  carRouter: require('./car/car.router')
+  sellerRouter: require('./role/seller/seller.router'),
+  adminRouter: require('./role/admin/administrator.router')
 };

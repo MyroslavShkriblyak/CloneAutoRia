@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const advertisementSchema = new Schema({
   _advert_id: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -10,4 +10,4 @@ const advertisementSchema = new Schema({
   views: Number,
 });
 
-module.exports = model("Advertisement", advertisementSchema);
+module.exports = model('Advertisement', advertisementSchema);

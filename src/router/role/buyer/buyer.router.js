@@ -1,12 +1,17 @@
 const router = require('express').Router();
 
-const { carService } = require('../../../services');
+const { advertisementService } = require('../../../service');
+const { buyerController } = require('../../../controller');
+const { userMiddleware } = require('../../../middleware');
 
-router.get('/cars', carService.getAll);
-router.post('/car-viewing', );
-router.post('/test-drive');
-router.post('/contact-seller');
-router.post('/contact-dealership');
+router.get('/cars', advertisementService.getAll);
 
+router.post('/car-viewing', buyerController.CarViewing);
+
+router.post('/test-drive', buyerController.CarTestDrive);
+
+router.post('/contact-seller', userMiddleware.checkRole('seller'), buyerController.CarSeller);
+
+router.post('/contact-dealership', buyerController.CarDealership);
 
 module.exports = router;

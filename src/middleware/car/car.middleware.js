@@ -1,5 +1,5 @@
 const { carValidator, commonValidator } = require('../../validator');
-const { carService } = require('../../services');
+const { carService } = require('../../service');
 
 const ApiError = require('../../error/ApiError')
 
@@ -28,6 +28,7 @@ module.exports = {
         throw new ApiError(validate.error.message)
       }
 
+      req.body = validate.value;
       next();
     } catch (e) {
       next(e);
@@ -41,6 +42,7 @@ module.exports = {
         throw new ApiError(validate.error.message, 400);
       }
 
+      req.body = validate.value;
       next();
     } catch (e) {
       next(e);

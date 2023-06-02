@@ -5,6 +5,7 @@ const CarSchema = new Schema({
   brand: String,
   model: String,
   price: String,
+  description: String
 },{
   timestamps: true,
   versionKey: false

@@ -1,4 +1,4 @@
-const { advertisementService } = require('../../services')
+const { advertisementService } = require('../../service');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -26,7 +26,7 @@ module.exports = {
 
       const advertisement = await advertisementService.updateAdvert(advertId, newAdvertInfo);
 
-      res.status().json(advertisement);
+      res.status(201).json(advertisement);
     } catch (e) {
       next(e);
     }
